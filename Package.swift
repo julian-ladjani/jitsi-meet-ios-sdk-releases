@@ -1,12 +1,24 @@
-// swift-tools-version:5.3 import PackageDescription let package = Package(
-    name: "JitsiMeetSDK", platforms: [
+// swift-tools-version:5.3
+import PackageDescription
+
+let package = Package(
+    name: "JitsiMeetSDK",
+    platforms: [
         .iOS(.v12)
-    ], products: [
+    ],
+    products: [
         .library(
-            name: "JitsiMeetSDK", targets: ["JitsiMeetSDK"])
-    ], targets: [
+            name: "JitsiMeetSDK",
+            targets: ["JitsiMeetSDK"])
+    ],
+    targets: [
         .binaryTarget(
-            name: "JitsiMeetSDK", path: "Frameworks/JitsiMeetSDK.xcframework"
+            name: "JitsiMeetSDK",
+            path: "Frameworks/JitsiMeetSDK.xcframework"
         ),
-	.binaryTarget(name: "WebRTC", path: "Frameworks/WebRTC.xcframework")
-    ] )
+        .binaryTarget(
+            name: "WebRTC",
+            path: "Frameworks/WebRTC.xcframework"
+        )
+    ]
+)
