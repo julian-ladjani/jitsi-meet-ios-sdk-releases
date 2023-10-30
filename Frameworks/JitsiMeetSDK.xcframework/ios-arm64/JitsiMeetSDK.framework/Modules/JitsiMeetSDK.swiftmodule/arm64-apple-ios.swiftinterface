@@ -1,12 +1,13 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
-// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name JitsiMeetSDK
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios12.4 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name JitsiMeetSDK
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 @_exported import JitsiMeetSDK
 import Swift
 import UIKit
 import _Concurrency
 import _StringProcessing
+import _SwiftConcurrencyShims
 public typealias AnimationCompletion = (Swift.Bool) -> Swift.Void
 public protocol PiPViewCoordinatorDelegate : AnyObject {
   func exitPictureInPicture()
@@ -30,7 +31,7 @@ public class PiPViewCoordinator {
   public var initialPositionInSuperView: JitsiMeetSDK.PiPViewCoordinator.Position
   @available(*, deprecated, message: "The PiP window size is now fixed to 150px.")
   public var c: CoreFoundation.CGFloat
-  weak public var delegate: JitsiMeetSDK.PiPViewCoordinatorDelegate?
+  weak public var delegate: (any JitsiMeetSDK.PiPViewCoordinatorDelegate)?
   public init(withView view: UIKit.UIView)
   public func configureAsStickyView(withParentView parentView: UIKit.UIView? = nil)
   public func show(completion: JitsiMeetSDK.AnimationCompletion? = nil)
